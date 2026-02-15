@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SRL-LOGIX Client Portal - Register, login, and manage your shipments with Stack Auth">
+    <meta name="keywords" content="client portal, shipment booking, logistics management, user registration, stack auth">
+    <title>Client Portal - SRL-LOGIX</title>
+    
+    <!-- Contact Information Meta -->
+    <meta name="contact-email" content="srlmsocial@gmail.com">
+    <meta name="contact-phone" content="0789858837">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/Logo.JPG">
+    
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.95));
+        }
+        .auth-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(11,37,69,0.15);
+            border: 1px solid rgba(11,37,69,0.1);
+        }
+        .auth-tabs .nav-link {
+            color: var(--navy);
+            border: none;
+            background: transparent;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 10px;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+        }
+        .auth-tabs .nav-link.active {
+            background: var(--navy);
+            color: white;
+        }
+        .auth-tabs .nav-link:hover {
+            background: rgba(11,37,69,0.1);
+        }
+        .form-control, .form-select {
+            border: 2px solid rgba(11,37,69,0.1);
+            border-radius: 10px;
+            padding: 12px 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--navy);
+            box-shadow: 0 0 0 0.2rem rgba(11,37,69,0.1);
+        }
+        .btn-auth {
+            background: var(--navy);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-auth:hover {
+            background: rgba(11,37,69,0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(11,37,69,0.2);
+        }
+        .input-group-text {
+            background: rgba(11,37,69,0.05);
+            border: 2px solid rgba(11,37,69,0.1);
+            border-right: none;
+            color: var(--navy);
+        }
+        .form-control.with-icon {
+            border-left: none;
+        }
+        .success-message {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .error-message {
+            background: linear-gradient(135deg, #dc3545, #fd7e14);
+            color: white;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .loading {
+            display: none;
+        }
+        .document-upload {
+            border: 2px dashed rgba(11,37,69,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            background: rgba(11,37,69,0.02);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .document-upload:hover {
+            border-color: var(--navy);
+            background: rgba(11,37,69,0.05);
+        }
+        .document-upload.dragover {
+            border-color: var(--accent);
+            background: rgba(255,221,87,0.1);
+        }
+        .oauth-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .oauth-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .oauth-btn:hover {
+            border-color: var(--navy);
+            background: rgba(11,37,69,0.05);
+            transform: translateY(-1px);
+        }
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        .divider span {
+            background: white;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <span><i class="bi bi-telephone-fill"></i> <a href="tel:0789858837" class="text-white text-decoration-none">0789858837</a></span>
+                    <span><i class="bi bi-envelope-fill"></i> <a href="mailto:srlmsocial@gmail.com" class="text-white text-decoration-none">srlmsocial@gmail.com</a></span>
+                    <span><i class="bi bi-clock-fill"></i> Mon-Fri: 8AM-6PM</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="https://srllogix.github.io" target="_blank" class="text-white me-3"><i class="bi bi-globe"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-glass sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/Logo.JPG" alt="SRL-LOGIX" height="40" class="me-2">
+                <span class="brand-text">SRL-LOGIX</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="services/index.html">All Services</a></li>
+                            <li><a class="dropdown-item" href="services/air-freight.html">Air Freight</a></li>
+                            <li><a class="dropdown-item" href="services/sea-freight.html">Sea Freight</a></li>
+                            <li><a class="dropdown-item" href="services/road-freight.html">Road & Rail</a></li>
+                            <li><a class="dropdown-item" href="services/warehousing.html">Warehousing</a></li>
+                            <li><a class="dropdown-item" href="services/customs-clearance.html">Customs Clearing</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="services/consolidation/china.html">China → SA</a></li>
+                            <li><a class="dropdown-item" href="services/consolidation/nigeria.html">Nigeria → SA</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="ior.html">Importer of Record</a></li>
+                            <li><a class="dropdown-item" href="eor.html">Exporter of Record</a></li>
+                            <li><a class="dropdown-item" href="ddp.html">Delivered Duty Paid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="portalsDropdown" role="button" data-bs-toggle="dropdown">
+                            Portals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="client.html">Client Portal</a></li>
+                            <li><a class="dropdown-item" href="driver.html">Driver Portal</a></li>
+                            <li><a class="dropdown-item" href="agent.html">Agent Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="track.html">Track & Trace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a href="contact.html" class="btn btn-quote">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Authentication Section -->
+    <section class="auth-container d-flex align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="auth-card p-5">
+                        <!-- Success/Error Messages -->
+                        <div id="successMessage" class="success-message">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <span id="successText">Success!</span>
+                        </div>
+                        <div id="errorMessage" class="error-message">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <span id="errorText">Error!</span>
+                        </div>
+
+                        <!-- Logo and Title -->
+                        <div class="text-center mb-4">
+                            <img src="images/Logo.JPG" alt="SRL-LOGIX" height="60" class="mb-3">
+                            <h2 class="fw-bold" style="color: var(--navy);">SRL-LOGIX Client Portal</h2>
+                            <p class="text-muted">Register or login to manage your shipments</p>
+                        </div>
+
+                        <!-- Auth Tabs -->
+                        <ul class="nav nav-tabs auth-tabs mb-4" id="authTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">
+                                    <i class="bi bi-person-plus me-2"></i>Register
+                                </button>
+                            </li>
+                        </ul>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="authTabContent">
+                            <!-- Login Tab -->
+                            <div class="tab-pane fade show active" id="login" role="tabpanel">
+                                <!-- Stack Auth Sign In Component -->
+                                <div id="stack-signin">
+                                    <div class="mb-4">
+                                        <label for="loginEmail" class="form-label fw-semibold">Email Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                            <input type="email" class="form-control with-icon" id="loginEmail" name="email" required placeholder="your@email.com">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="loginPassword" class="form-label fw-semibold">Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                            <input type="password" class="form-control with-icon" id="loginPassword" name="password" required placeholder="Enter password">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3 text-end">
+                                            <a href="#" class="text-decoration-none" onclick="showForgotPassword()">Forgot Password?</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center mb-4">
+                                        <button type="button" onclick="handleStackSignIn()" class="btn btn-auth btn-lg px-5">
+                                            <span class="button-text">Sign In</span>
+                                            <span class="loading">
+                                                <i class="bi bi-hourglass-split me-2"></i>Signing In...
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                    <div class="divider">
+                                        <span>OR</span>
+                                    </div>
+
+                                    <!-- OAuth Login -->
+                                    <div class="oauth-buttons">
+                                        <button type="button" onclick="handleOAuthSignIn('google')" class="oauth-btn">
+                                            <i class="bi bi-google"></i>
+                                            <span>Google</span>
+                                        </button>
+                                        <button type="button" onclick="handleOAuthSignIn('github')" class="oauth-btn">
+                                            <i class="bi bi-github"></i>
+                                            <span>GitHub</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Register Tab -->
+                            <div class="tab-pane fade" id="register" role="tabpanel">
+                                <!-- Stack Auth Sign Up Component -->
+                                <div id="stack-signup">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="firstName" class="form-label fw-semibold">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="John">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="lastName" class="form-label fw-semibold">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Doe">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="regEmail" class="form-label fw-semibold">Email Address *</label>
+                                            <input type="email" class="form-control" id="regEmail" name="email" required placeholder="your@email.com">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="phone" class="form-label fw-semibold">Phone Number *</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" required placeholder="+27 12 345 6789">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="company" class="form-label fw-semibold">Company Name *</label>
+                                            <input type="text" class="form-control" id="company" name="company" required placeholder="Your Company Ltd">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="regPassword" class="form-label fw-semibold">Password *</label>
+                                            <input type="password" class="form-control" id="regPassword" name="password" required placeholder="Min 8 characters">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="userType" class="form-label fw-semibold">Account Type *</label>
+                                        <select class="form-select" id="userType" name="userType" required>
+                                            <option value="">Select Account Type</option>
+                                            <option value="individual">Individual Shipper</option>
+                                            <option value="business">Business Shipper</option>
+                                            <option value="supplier">Supplier</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <!-- Document Upload for Business Users -->
+                                    <div id="documentUploadSection" class="mb-3" style="display: none;">
+                                        <label class="form-label fw-semibold">Business Registration Documents *</label>
+                                        <div class="document-upload" onclick="document.getElementById('regDocuments').click()">
+                                            <i class="bi bi-cloud-upload fs-2 mb-2"></i>
+                                            <p class="mb-1">Click to upload or drag and drop</p>
+                                            <small class="text-muted">Business Registration, Tax Clearance, ID Documents (PDF, JPG, PNG - Max 10MB)</small>
+                                            <input type="file" id="regDocuments" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                        </div>
+                                        <div id="uploadedFiles" class="mt-2"></div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="terms" required>
+                                            <label class="form-check-label" for="terms">
+                                                I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a> and <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="newsletter">
+                                            <label class="form-check-label" for="newsletter">
+                                                Send me shipping updates and promotions
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <button type="button" onclick="handleStackSignUp()" class="btn btn-auth btn-lg px-5">
+                                            <span class="button-text">Create Account</span>
+                                            <span class="loading">
+                                                <i class="bi bi-hourglass-split me-2"></i>Creating Account...
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                    <div class="divider">
+                                        <span>OR</span>
+                                    </div>
+
+                                    <!-- OAuth Sign Up -->
+                                    <div class="oauth-buttons">
+                                        <button type="button" onclick="handleOAuthSignUp('google')" class="oauth-btn">
+                                            <i class="bi bi-google"></i>
+                                            <span>Google</span>
+                                        </button>
+                                        <button type="button" onclick="handleOAuthSignUp('github')" class="oauth-btn">
+                                            <i class="bi bi-github"></i>
+                                            <span>GitHub</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="text-center mt-4 pt-4 border-top">
+                            <p class="text-muted mb-2">Need help getting started?</p>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="contact.html" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-chat-dots me-2"></i>Contact Support
+                                </a>
+                                <a href="services/index.html" class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-box-seam me-2"></i>View Services
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="images/Logo.JPG" alt="SRL-LOGIX" height="40" class="me-2">
+                        <h5 class="mb-0 text-white fw-bold">SRL-LOGIX</h5>
+                    </div>
+                    <p class="mb-3">Your trusted logistics partner for comprehensive supply chain solutions across Africa and beyond.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://srllogix.github.io" target="_blank" class="text-white fs-5"><i class="bi bi-globe"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="services/index.html" class="text-white-50 text-decoration-none">Services</a></li>
+                        <li class="mb-2"><a href="track.html" class="text-white-50 text-decoration-none">Track & Trace</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Contact Info</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i><a href="tel:0789858837" class="text-white-50 text-decoration-none">0789858837</a></li>
+                        <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:srlmsocial@gmail.com" class="text-white-50 text-decoration-none">srlmsocial@gmail.com</a></li>
+                        <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i><span class="text-white-50">Johannesburg, South Africa</span></li>
+                        <li class="mb-2"><i class="bi bi-clock-fill me-2"></i><span class="text-white-50">Mon-Fri: 8AM-6PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="border-top border-secondary pt-3 text-center">
+                        <p class="text-white-50 mb-0">&copy; 2024 SRL-LOGIX. All rights reserved. | <a href="https://srllogix.github.io" target="_blank" class="text-white-50">Visit our GitHub</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Stack Auth JavaScript -->
+    <script>
+        // Stack Auth Configuration
+        const stackConfig = {
+            projectId: 'your-project-id', // Replace with your actual project ID
+            baseUrl: window.location.origin,
+            redirectUrl: `${window.location.origin}/handler/callback`,
+            postLoginRedirect: '/dashboard',
+            postSignUpRedirect: '/dashboard'
+        };
+
+        // Show/hide document upload based on user type
+        document.getElementById('userType').addEventListener('change', function() {
+            const docSection = document.getElementById('documentUploadSection');
+            if (this.value === 'business' || this.value === 'supplier') {
+                docSection.style.display = 'block';
+            } else {
+                docSection.style.display = 'none';
+            }
+        });
+
+        // Handle file upload
+        document.getElementById('regDocuments').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            const uploadedFiles = document.getElementById('uploadedFiles');
+            uploadedFiles.innerHTML = '';
+            
+            files.forEach(file => {
+                if (file.size > 10 * 1024 * 1024) {
+                    showError(`File ${file.name} is too large. Maximum size is 10MB.`);
+                    return;
+                }
+                
+                const fileDiv = document.createElement('div');
+                fileDiv.className = 'alert alert-success alert-sm d-flex align-items-center';
+                fileDiv.innerHTML = `
+                    <i class="bi bi-file-earmark-check me-2"></i>
+                    <span>${file.name} (${(file.size / 1024).toFixed(1)} KB)</span>
+                `;
+                uploadedFiles.appendChild(fileDiv);
+            });
+        });
+
+        // Stack Auth Sign In Handler
+        async function handleStackSignIn() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                showError('Please enter both email and password.');
+                return;
+            }
+
+            toggleLoading(true, 'loginForm');
+            
+            try {
+                // Initialize Stack Auth client
+                const { StackClient } = await import('@stackframe/stack');
+                const client = new StackClient(stackConfig);
+                
+                // Sign in with email and password
+                const result = await client.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+                
+                if (result.status === 'success') {
+                    showSuccess('Login successful! Redirecting to dashboard...');
+                    setTimeout(() => {
+                        window.location.href = stackConfig.postLoginRedirect;
+                    }, 2000);
+                } else {
+                    showError(result.message || 'Login failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Stack Auth error:', error);
+                showError('Authentication service unavailable. Please try again later.');
+            } finally {
+                toggleLoading(false, 'loginForm');
+            }
+        }
+
+        // Stack Auth Sign Up Handler
+        async function handleStackSignUp() {
+            const formData = new FormData(document.querySelector('#register form'));
+            const userData = Object.fromEntries(formData);
+            
+            // Validate required fields
+            if (!userData.firstName || !userData.lastName || !userData.email || !userData.password) {
+                showError('Please fill in all required fields.');
+                return;
+            }
+            
+            if (userData.password.length < 8) {
+                showError('Password must be at least 8 characters long.');
+                return;
+            }
+            
+            if (!userData.terms) {
+                showError('Please accept the Terms & Conditions.');
+                return;
+            }
+
+            toggleLoading(true, 'registerForm');
+            
+            try {
+                // Initialize Stack Auth client
+                const { StackClient } = await import('@stackframe/stack');
+                const client = new StackClient(stackConfig);
+                
+                // Sign up with email and password
+                const result = await client.signUpWithPassword({
+                    email: userData.email,
+                    password: userData.password,
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    displayName: `${userData.firstName} ${userData.lastName}`,
+                    profileData: {
+                        phone: userData.phone,
+                        company: userData.company,
+                        userType: userData.userType
+                    }
+                });
+                
+                if (result.status === 'success') {
+                    showSuccess('Registration successful! Please check your email for verification.');
+                    toggleLoading(false, 'registerForm');
+                    
+                    // Reset form
+                    document.querySelector('#register form').reset();
+                    document.getElementById('uploadedFiles').innerHTML = '';
+                    
+                    // Switch to login tab
+                    bootstrap.Tab.getInstance(document.getElementById('login-tab')).show();
+                } else {
+                    showError(result.message || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Stack Auth error:', error);
+                showError('Registration service unavailable. Please try again later.');
+            } finally {
+                toggleLoading(false, 'registerForm');
+            }
+        }
+
+        // OAuth Sign In Handler
+        async function handleOAuthSignIn(provider) {
+            toggleLoading(true, 'loginForm');
+            
+            try {
+                const { StackClient } = await import('@stackframe/stack');
+                const client = new StackClient(stackConfig);
+                
+                // Sign in with OAuth provider
+                const result = await client.signInWithOAuth({
+                    provider: provider,
+                    type: 'sign-in'
+                });
+                
+                if (result.status === 'success') {
+                    showSuccess('OAuth login successful! Redirecting to dashboard...');
+                    setTimeout(() => {
+                        window.location.href = stackConfig.postLoginRedirect;
+                    }, 2000);
+                } else {
+                    showError(result.message || 'OAuth login failed.');
+                }
+            } catch (error) {
+                console.error('OAuth error:', error);
+                showError('OAuth service unavailable. Please try again later.');
+            } finally {
+                toggleLoading(false, 'loginForm');
+            }
+        }
+
+        // OAuth Sign Up Handler
+        async function handleOAuthSignUp(provider) {
+            toggleLoading(true, 'registerForm');
+            
+            try {
+                const { StackClient } = await import('@stackframe/stack');
+                const client = new StackClient(stackConfig);
+                
+                // Sign up with OAuth provider
+                const result = await client.signUpWithOAuth({
+                    provider: provider,
+                    type: 'sign-up'
+                });
+                
+                if (result.status === 'success') {
+                    showSuccess('OAuth registration successful! Redirecting to dashboard...');
+                    setTimeout(() => {
+                        window.location.href = stackConfig.postSignUpRedirect;
+                    }, 2000);
+                } else {
+                    showError(result.message || 'OAuth registration failed.');
+                }
+            } catch (error) {
+                console.error('OAuth error:', error);
+                showError('OAuth service unavailable. Please try again later.');
+            } finally {
+                toggleLoading(false, 'registerForm');
+            }
+        }
+
+        // Helper functions
+        function toggleLoading(show, formId) {
+            const form = document.querySelector(`#${formId}`);
+            const buttonText = form.querySelector('.button-text');
+            const loadingText = form.querySelector('.loading');
+            const submitBtn = form.querySelector('button');
+            
+            if (show) {
+                buttonText.style.display = 'none';
+                loadingText.style.display = 'inline';
+                submitBtn.disabled = true;
+            } else {
+                buttonText.style.display = 'inline';
+                loadingText.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            const errorDiv = document.getElementById('errorMessage');
+            document.getElementById('successText').textContent = message;
+            successDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showError(message) {
+            const successDiv = document.getElementById('successMessage');
+            const errorDiv = document.getElementById('errorMessage');
+            document.getElementById('errorText').textContent = message;
+            errorDiv.style.display = 'block';
+            successDiv.style.display = 'none';
+            
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function showForgotPassword() {
+            const email = prompt('Enter your email address for password reset:');
+            if (email) {
+                showSuccess('Password reset link sent to ' + email);
+            }
+        }
+
+        // Drag and drop functionality
+        const uploadArea = document.querySelector('.document-upload');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            const files = Array.from(e.dataTransfer.files);
+            document.getElementById('regDocuments').files = e.dataTransfer.files;
+            
+            // Trigger change event
+            const event = new Event('change', { bubbles: true });
+            document.getElementById('regDocuments').dispatchEvent(event);
+        });
+
+        // Check if user is already logged in (for development)
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const { StackClient } = await import('@stackframe/stack');
+                const client = new StackClient(stackConfig);
+                
+                const user = await client.getUser();
+                if (user) {
+                    window.location.href = stackConfig.postLoginRedirect;
+                }
+            } catch (error) {
+                // Stack Auth not loaded, continue with page
+                console.log('Stack Auth not initialized, using fallback mode');
+            }
+        });
+    </script>
+</body>
+</html>

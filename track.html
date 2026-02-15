@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your shipments with SRL-LOGIX - Real-time tracking and updates for all your logistics needs.">
+    <meta name="keywords" content="track shipment, logistics tracking, freight tracking, SRL-LOGIX tracking, cargo tracking">
+    <title>Track & Trace - SRL-LOGIX</title>
+    
+    <!-- Contact Information Meta -->
+    <meta name="contact-email" content="srlmsocial@gmail.com">
+    <meta name="contact-phone" content="0789858837">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/Logo.JPG">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <span><i class="bi bi-telephone-fill"></i> <a href="tel:0789858837" class="text-white text-decoration-none">0789858837</a></span>
+                    <span><i class="bi bi-envelope-fill"></i> <a href="mailto:srlmsocial@gmail.com" class="text-white text-decoration-none">srlmsocial@gmail.com</a></span>
+                    <span><i class="bi bi-clock-fill"></i> Mon-Fri: 8AM-6PM</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="https://srllogix.github.io" target="_blank" class="text-white me-3"><i class="bi bi-globe"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-glass sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/Logo.JPG" alt="SRL-LOGIX" height="40" class="me-2">
+                <span class="brand-text">SRL-LOGIX</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="services/index.html">All Services</a></li>
+                            <li><a class="dropdown-item" href="services/air-freight.html">Air Freight</a></li>
+                            <li><a class="dropdown-item" href="services/sea-freight.html">Sea Freight</a></li>
+                            <li><a class="dropdown-item" href="services/road-freight.html">Road & Rail</a></li>
+                            <li><a class="dropdown-item" href="services/warehousing.html">Warehousing</a></li>
+                            <li><a class="dropdown-item" href="services/customs-clearance.html">Customs Clearing</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="services/consolidation/china.html">China → SA</a></li>
+                            <li><a class="dropdown-item" href="services/consolidation/nigeria.html">Nigeria → SA</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="ior.html">Importer of Record</a></li>
+                            <li><a class="dropdown-item" href="eor.html">Exporter of Record</a></li>
+                            <li><a class="dropdown-item" href="ddp.html">Delivered Duty Paid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="portalsDropdown" role="button" data-bs-toggle="dropdown">
+                            Portals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="client.html">Client Portal</a></li>
+                            <li><a class="dropdown-item" href="driver.html">Driver Portal</a></li>
+                            <li><a class="dropdown-item" href="agent.html">Agent Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="track.html">Track & Trace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a href="contact.html" class="btn btn-quote">Get Quote</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section position-relative overflow-hidden" style="min-height: 60vh;">
+        <div class="position-absolute w-100 h-100" style="z-index: 0; overflow: hidden;">
+            <img src="images/Banner.JPG" alt="Tracking Background" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;">
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(rgba(11,37,69,0.75), rgba(11,37,69,0.85));"></div>
+        </div>
+        
+        <div class="container position-relative" style="z-index: 2; padding-top: 120px;">
+            <div class="row align-items-center min-vh-50">
+                <div class="col-lg-12 text-white text-center">
+                    <div class="hero-content animate-on-scroll">
+                        <h1 class="display-3 fw-bold mb-4" style="line-height: 1.2; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.35);">
+                            Track &<br/>
+                            <span style="color: var(--accent);">Trace</span>
+                        </h1>
+                        <p class="lead mb-4 text-white-50" style="font-size: 1.3rem;">
+                            Real-time shipment tracking and updates for all your logistics needs
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave position-absolute bottom-0 w-100" style="z-index: 1;">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-light text-dark mb-3 px-3 py-2">Track Shipment</span>
+                <h2 class="display-5 fw-bold mb-3" style="color: var(--navy);">Track Your Shipment</h2>
+                <p class="lead text-muted">Enter your tracking number to get real-time updates on your shipment</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <form id="trackingForm">
+                                <div class="row g-3">
+                                    <div class="col-md-8">
+                                        <label for="trackingNumber" class="form-label fw-semibold">Tracking Number</label>
+                                        <input type="text" class="form-control form-control-lg" id="trackingNumber" placeholder="Enter tracking number (e.g., SRL-2024-0156)" required>
+                                        <small class="text-muted">Enter your booking reference or tracking number</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-semibold">&nbsp;</label>
+                                        <button type="submit" class="btn btn-quote btn-lg w-100 rounded-pill">
+                                            <i class="bi bi-search me-2"></i>Track Shipment
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tracking Results -->
+            <div id="trackingResults" style="display: none;">
+                <div class="row mt-5">
+                    <div class="col-lg-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-box-seam me-2"></i>
+                                    Shipment Details: <span id="resultTrackingNumber"></span>
+                                </h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <h6 class="fw-semibold mb-3" style="color: var(--navy);">Shipment Information</h6>
+                                        <div class="mb-2">
+                                            <strong>Status:</strong> 
+                                            <span id="shipmentStatus" class="badge bg-success">In Transit</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Origin:</strong> <span id="shipmentOrigin">Johannesburg, South Africa</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Destination:</strong> <span id="shipmentDestination">Lagos, Nigeria</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Service Type:</strong> <span id="shipmentService">Air Freight</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Estimated Delivery:</strong> <span id="estimatedDelivery">2024-02-20</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="fw-semibold mb-3" style="color: var(--navy);">Cargo Details</h6>
+                                        <div class="mb-2">
+                                            <strong>Weight:</strong> <span id="cargoWeight">250 kg</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Dimensions:</strong> <span id="cargoDimensions">120x80x60 cm</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Cargo Type:</strong> <span id="cargoType">General Cargo</span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <strong>Pieces:</strong> <span id="cargoPieces">5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-clock-history me-2"></i>
+                                    Shipment Timeline
+                                </h5>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker bg-success"></div>
+                                        <div class="timeline-content">
+                                            <h6 class="fw-semibold">Shipment Booked</h6>
+                                            <p class="text-muted mb-1">Booking confirmed and documents received</p>
+                                            <small class="text-muted">2024-02-15 09:30 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker bg-success"></div>
+                                        <div class="timeline-content">
+                                            <h6 class="fw-semibold">Cargo Received</h6>
+                                            <p class="text-muted mb-1">Cargo received at Johannesburg facility</p>
+                                            <small class="text-muted">2024-02-15 02:00 PM</small>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker bg-warning"></div>
+                                        <div class="timeline-content">
+                                            <h6 class="fw-semibold">In Transit</h6>
+                                            <p class="text-muted mb-1">Shipment departed Johannesburg hub</p>
+                                            <small class="text-muted">2024-02-16 08:00 AM</small>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker bg-secondary"></div>
+                                        <div class="timeline-content">
+                                            <h6 class="fw-semibold">Customs Clearance</h6>
+                                            <p class="text-muted mb-1">Pending customs clearance at destination</p>
+                                            <small class="text-muted">Expected: 2024-02-18</small>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-marker bg-light"></div>
+                                        <div class="timeline-content">
+                                            <h6 class="fw-semibold">Final Delivery</h6>
+                                            <p class="text-muted mb-1">Out for delivery to consignee</p>
+                                            <small class="text-muted">Expected: 2024-02-20</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge bg-success mb-3 px-3 py-2">Features</span>
+                <h2 class="display-5 fw-bold mb-3" style="color: var(--navy);">Why Track With SRL-LOGIX?</h2>
+                <p class="lead text-muted">Advanced tracking features for complete visibility</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.8)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="bi bi-geo-alt text-white fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3" style="color: var(--navy);">Real-time Tracking</h5>
+                        <p class="text-muted">Live updates on your shipment location and status</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.8)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="bi bi-bell text-white fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3" style="color: var(--navy);">Email Notifications</h5>
+                        <p class="text-muted">Automatic alerts for important shipment milestones</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.8)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="bi bi-file-text text-white fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3" style="color: var(--navy);">Document Access</h5>
+                        <p class="text-muted">Download shipping documents and certificates</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="text-center">
+                        <div class="icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.8)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+                            <i class="bi bi-headset text-white fs-2"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3" style="color: var(--navy);">24/7 Support</h5>
+                        <p class="text-muted">Dedicated support for all tracking queries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5" style="background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.95));">
+        <div class="container">
+            <div class="text-center text-white">
+                <h2 class="display-5 fw-bold mb-3">Need Help With Tracking?</h2>
+                <p class="lead mb-4">Our support team is here to assist you with any tracking questions</p>
+                <div class="d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="contact.html" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="bi bi-chat-dots me-2"></i>Contact Support
+                    </a>
+                    <a href="tel:0789858837" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="bi bi-telephone me-2"></i>Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="images/Logo.JPG" alt="SRL-LOGIX" height="40" class="me-2">
+                        <h5 class="mb-0 text-white fw-bold">SRL-LOGIX</h5>
+                    </div>
+                    <p class="mb-3">Your trusted logistics partner for comprehensive supply chain solutions across Africa and beyond.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://srllogix.github.io" target="_blank" class="text-white fs-5"><i class="bi bi-globe"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="services/index.html" class="text-white-50 text-decoration-none">Services</a></li>
+                        <li class="mb-2"><a href="track.html" class="text-white-50 text-decoration-none">Track & Trace</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Contact Info</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i><a href="tel:0789858837" class="text-white-50 text-decoration-none">0789858837</a></li>
+                        <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:srlmsocial@gmail.com" class="text-white-50 text-decoration-none">srlmsocial@gmail.com</a></li>
+                        <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i><span class="text-white-50">Johannesburg, South Africa</span></li>
+                        <li class="mb-2"><i class="bi bi-clock-fill me-2"></i><span class="text-white-50">Mon-Fri: 8AM-6PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="border-top border-secondary pt-3 text-center">
+                        <p class="text-white-50 mb-0">&copy; 2024 SRL-LOGIX. All rights reserved. | <a href="https://srllogix.github.io" target="_blank" class="text-white-50">Visit our GitHub</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Tracking JavaScript -->
+    <script>
+        // Sample tracking data
+        const trackingData = {
+            'SRL-2024-0156': {
+                status: 'In Transit',
+                origin: 'Johannesburg, South Africa',
+                destination: 'Lagos, Nigeria',
+                service: 'Air Freight',
+                estimatedDelivery: '2024-02-20',
+                weight: '250 kg',
+                dimensions: '120x80x60 cm',
+                cargoType: 'General Cargo',
+                pieces: '5'
+            },
+            'SRL-2024-0157': {
+                status: 'Customs Clearance',
+                origin: 'Shanghai, China',
+                destination: 'Johannesburg, South Africa',
+                service: 'Sea Freight',
+                estimatedDelivery: '2024-02-25',
+                weight: '5000 kg',
+                dimensions: 'Container 40ft',
+                cargoType: 'Electronics',
+                pieces: '150'
+            },
+            'SRL-2024-0158': {
+                status: 'Delivered',
+                origin: 'Cape Town, South Africa',
+                destination: 'Harare, Zimbabwe',
+                service: 'Road Freight',
+                estimatedDelivery: '2024-02-18',
+                weight: '1000 kg',
+                dimensions: '200x100x80 cm',
+                cargoType: 'Perishable Goods',
+                pieces: '20'
+            }
+        };
+
+        document.getElementById('trackingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const trackingNumber = document.getElementById('trackingNumber').value.trim().toUpperCase();
+            const resultsDiv = document.getElementById('trackingResults');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Tracking...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                const data = trackingData[trackingNumber];
+                
+                if (data) {
+                    // Update results
+                    document.getElementById('resultTrackingNumber').textContent = trackingNumber;
+                    document.getElementById('shipmentStatus').textContent = data.status;
+                    document.getElementById('shipmentOrigin').textContent = data.origin;
+                    document.getElementById('shipmentDestination').textContent = data.destination;
+                    document.getElementById('shipmentService').textContent = data.service;
+                    document.getElementById('estimatedDelivery').textContent = data.estimatedDelivery;
+                    document.getElementById('cargoWeight').textContent = data.weight;
+                    document.getElementById('cargoDimensions').textContent = data.dimensions;
+                    document.getElementById('cargoType').textContent = data.cargoType;
+                    document.getElementById('cargoPieces').textContent = data.pieces;
+                    
+                    // Update status badge color
+                    const statusBadge = document.getElementById('shipmentStatus');
+                    statusBadge.className = 'badge ';
+                    if (data.status === 'Delivered') {
+                        statusBadge.className += 'bg-success';
+                    } else if (data.status === 'In Transit') {
+                        statusBadge.className += 'bg-warning';
+                    } else if (data.status === 'Customs Clearance') {
+                        statusBadge.className += 'bg-info';
+                    } else {
+                        statusBadge.className += 'bg-secondary';
+                    }
+                    
+                    // Show results
+                    resultsDiv.style.display = 'block';
+                    resultsDiv.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('Tracking number not found. Please check your tracking number and try again.\n\nTry one of these sample numbers:\n• SRL-2024-0156\n• SRL-2024-0157\n• SRL-2024-0158');
+                }
+                
+                // Reset button
+                submitBtn.innerHTML = '<i class="bi bi-search me-2"></i>Track Shipment';
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    </script>
+
+    <style>
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #dee2e6;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #dee2e6;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--navy);
+        }
+        
+        .timeline-content h6 {
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+    </style>
+</body>
+</html>

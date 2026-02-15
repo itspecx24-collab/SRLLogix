@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SRL-LOGIX Documentation Portal - Access and manage all your shipping documents, invoices, and customs paperwork.">
+    <meta name="keywords" content="documentation portal, shipping documents, customs paperwork, logistics documents, SRL-LOGIX">
+    <title>Documentation Portal - SRL-LOGIX</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/components.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="fas fa-phone"></i> +27-12-345-6789</span>
+                    <span><i class="fas fa-envelope"></i> info@srllogix.co.za</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/logo.png" alt="SRL-LOGIX" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../services/consolidation.html">Consolidation Services</a></li>
+                            <li><a class="dropdown-item" href="../services/ior-eor.html">IOR/EOR Services</a></li>
+                            <li><a class="dropdown-item" href="../services/customs-clearance.html">Customs Clearance</a></li>
+                            <li><a class="dropdown-item" href="../services/freight-forwarding.html">Freight Forwarding</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="portalsDropdown" role="button" data-bs-toggle="dropdown">
+                            Portals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="client-portal.html">Client Portal</a></li>
+                            <li><a class="dropdown-item" href="tracking.html">Tracking Portal</a></li>
+                            <li><a class="dropdown-item active" href="documentation.html">Documentation Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coming Soon Banner -->
+    <section class="coming-soon-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="coming-soon-content">
+                        <i class="fas fa-file-alt"></i>
+                        <h1>Documentation Portal</h1>
+                        <p class="lead">Coming Soon - Centralized document management for all your shipping needs</p>
+                        <div class="coming-soon-features">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <i class="fas fa-cloud-download-alt"></i>
+                                    <h5>Document Access</h5>
+                                    <p>Download all your shipping documents 24/7</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="fas fa-folder-open"></i>
+                                    <h5>Organized Storage</h5>
+                                    <p>All documents organized by shipment and date</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="fas fa-search"></i>
+                                    <h5>Easy Search</h5>
+                                    <p>Find documents quickly with advanced search</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coming-soon-cta">
+                            <h3>Get Notified</h3>
+                            <p>Be the first to access our comprehensive documentation portal</p>
+                            <form class="coming-soon-form">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Enter your email address" required>
+                                            <button class="btn btn-primary" type="submit">Notify Me</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mock Documentation Interface -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Documentation Experience Preview</h2>
+                    <p class="section-subtitle">See how our document management system will work</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="documentation-preview">
+                        <div class="documentation-header">
+                            <h4><i class="fas fa-folder"></i> Document Library</h4>
+                            <div class="documentation-actions">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-filter"></i> Filter
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-search"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="document-categories">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="category-card">
+                                        <div class="category-icon">
+                                            <i class="fas fa-file-invoice"></i>
+                                        </div>
+                                        <h5>Invoices</h5>
+                                        <p class="category-count">24 documents</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="category-card">
+                                        <div class="category-icon">
+                                            <i class="fas fa-receipt"></i>
+                                        </div>
+                                        <h5>Receipts</h5>
+                                        <p class="category-count">18 documents</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="category-card">
+                                        <div class="category-icon">
+                                            <i class="fas fa-certificate"></i>
+                                        </div>
+                                        <h5>Certificates</h5>
+                                        <p class="category-count">12 documents</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="category-card">
+                                        <div class="category-icon">
+                                            <i class="fas fa-file-contract"></i>
+                                        </div>
+                                        <h5>Contracts</h5>
+                                        <p class="category-count">8 documents</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="document-list">
+                            <h5><i class="fas fa-list"></i> Recent Documents</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Document Name</th>
+                                            <th>Type</th>
+                                            <th>Shipment</th>
+                                            <th>Date</th>
+                                            <th>Size</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <i class="fas fa-file-pdf text-danger"></i>
+                                                Commercial_Invoice_SRL2024001.pdf
+                                            </td>
+                                            <td><span class="badge bg-info">Invoice</span></td>
+                                            <td>SRL2024001</td>
+                                            <td>2024-01-15</td>
+                                            <td>245 KB</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fas fa-file-pdf text-danger"></i>
+                                                Bill_of_Lading_SRL2024002.pdf
+                                            </td>
+                                            <td><span class="badge bg-warning">Bill of Lading</span></td>
+                                            <td>SRL2024002</td>
+                                            <td>2024-01-14</td>
+                                            <td>1.2 MB</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fas fa-file-pdf text-danger"></i>
+                                                Packing_List_SRL2024003.pdf
+                                            </td>
+                                            <td><span class="badge bg-success">Packing List</span></td>
+                                            <td>SRL2024003</td>
+                                            <td>2024-01-13</td>
+                                            <td>189 KB</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <i class="fas fa-file-pdf text-danger"></i>
+                                                Certificate_of_Origin_SRL2024001.pdf
+                                            </td>
+                                            <td><span class="badge bg-primary">Certificate</span></td>
+                                            <td>SRL2024001</td>
+                                            <td>2024-01-12</td>
+                                            <td>567 KB</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-download"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Documentation Features</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4>Cloud Storage</h4>
+                        <p>Secure cloud storage with automatic backups and 99.9% uptime guarantee.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4>Secure Access</h4>
+                        <p>Role-based access control and encrypted document storage for data security.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <h4>Easy Upload</h4>
+                        <p>Drag-and-drop interface for quick document uploads and organization.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h4>Version Control</h4>
+                        <p>Track document versions and changes with complete audit trails.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-share"></i>
+                        </div>
+                        <h4>Document Sharing</h4>
+                        <p>Share documents securely with stakeholders using time-limited links.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <h4>Print Ready</h4>
+                        <p>Download documents in print-ready formats for official use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Document Types -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Supported Document Types</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mb-3">
+                    <div class="doc-type-card">
+                        <i class="fas fa-file-invoice"></i>
+                        <h6>Invoices</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="doc-type-card">
+                        <i class="fas fa-file-contract"></i>
+                        <h6>Contracts</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="doc-type-card">
+                        <i class="fas fa-certificate"></i>
+                        <h6>Certificates</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="doc-type-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h6>Customs Forms</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="doc-type-card">
+                        <i class="fas fa-receipt"></i>
+                        <h6>Receipts</h6>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <div class="doc-type-card">
+                        <i class="fas fa-file-image"></i>
+                        <h6>Images</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2>Streamline Your Document Management</h2>
+                    <p class="lead">Get ready for hassle-free document access and management with our upcoming portal.</p>
+                    <div class="cta-buttons mt-4">
+                        <a href="../contact.html" class="btn btn-light btn-lg">Get Early Access</a>
+                        <a href="../services/customs-clearance.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>SRL-LOGIX</h4>
+                    <p>Your trusted logistics partner for comprehensive supply chain solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../services/consolidation.html">Services</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +27-12-345-6789</li>
+                        <li><i class="fas fa-envelope"></i> info@srllogix.co.za</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 SRL-LOGIX. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

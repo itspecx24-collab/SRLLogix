@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SRL-LOGIX Client Portal - Manage your shipments, track deliveries, and access logistics services.">
+    <meta name="keywords" content="client portal, shipment management, logistics dashboard, SRL-LOGIX">
+    <title>Client Portal - SRL-LOGIX</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link href="../assets/css/components.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="fas fa-phone"></i> +27-12-345-6789</span>
+                    <span><i class="fas fa-envelope"></i> info@srllogix.co.za</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/logo.png" alt="SRL-LOGIX" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../services/consolidation.html">Consolidation Services</a></li>
+                            <li><a class="dropdown-item" href="../services/ior-eor.html">IOR/EOR Services</a></li>
+                            <li><a class="dropdown-item" href="../services/customs-clearance.html">Customs Clearance</a></li>
+                            <li><a class="dropdown-item" href="../services/freight-forwarding.html">Freight Forwarding</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="portalsDropdown" role="button" data-bs-toggle="dropdown">
+                            Portals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="client-portal.html">Client Portal</a></li>
+                            <li><a class="dropdown-item" href="tracking.html">Tracking Portal</a></li>
+                            <li><a class="dropdown-item" href="documentation.html">Documentation Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Coming Soon Banner -->
+    <section class="coming-soon-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="coming-soon-content">
+                        <i class="fas fa-tools"></i>
+                        <h1>Client Portal</h1>
+                        <p class="lead">Coming Soon - Advanced shipment management and tracking system</p>
+                        <div class="coming-soon-features">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <i class="fas fa-boxes"></i>
+                                    <h5>Shipment Management</h5>
+                                    <p>Manage all your shipments in one place</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h5>Real-time Tracking</h5>
+                                    <p>Track your shipments in real-time</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="fas fa-file-alt"></i>
+                                    <h5>Document Access</h5>
+                                    <p>Access all shipping documents instantly</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coming-soon-cta">
+                            <h3>Be the First to Know</h3>
+                            <p>Sign up for updates and get early access when we launch</p>
+                            <form class="coming-soon-form">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Enter your email address" required>
+                                            <button class="btn btn-primary" type="submit">Notify Me</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mock Dashboard Preview -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">What to Expect</h2>
+                    <p class="section-subtitle">Preview of the upcoming client portal features</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="dashboard-preview">
+                        <div class="dashboard-header">
+                            <h4><i class="fas fa-tachometer-alt"></i> Dashboard Preview</h4>
+                        </div>
+                        <div class="dashboard-content">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="dashboard-widget">
+                                        <div class="widget-icon">
+                                            <i class="fas fa-shipping-fast"></i>
+                                        </div>
+                                        <div class="widget-content">
+                                            <h5>Active Shipments</h5>
+                                            <p class="widget-number">12</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dashboard-widget">
+                                        <div class="widget-icon">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                        <div class="widget-content">
+                                            <h5>Completed</h5>
+                                            <p class="widget-number">48</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dashboard-widget">
+                                        <div class="widget-icon">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="widget-content">
+                                            <h5>In Transit</h5>
+                                            <p class="widget-number">8</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dashboard-widget">
+                                        <div class="widget-icon">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="widget-content">
+                                            <h5>Alerts</h5>
+                                            <p class="widget-number">2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-section">
+                                <h5><i class="fas fa-list"></i> Recent Shipments</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Shipment ID</th>
+                                                <th>Origin</th>
+                                                <th>Destination</th>
+                                                <th>Status</th>
+                                                <th>ETA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>SRL2024001</td>
+                                                <td>Johannesburg</td>
+                                                <td>Cape Town</td>
+                                                <td><span class="badge bg-success">Delivered</span></td>
+                                                <td>2024-01-15</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SRL2024002</td>
+                                                <td>Durban</td>
+                                                <td>Johannesburg</td>
+                                                <td><span class="badge bg-warning">In Transit</span></td>
+                                                <td>2024-01-18</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SRL2024003</td>
+                                                <td>Johannesburg</td>
+                                                <td>Port Elizabeth</td>
+                                                <td><span class="badge bg-info">Processing</span></td>
+                                                <td>2024-01-20</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2 class="section-title">Portal Features</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-lock"></i>
+                        </div>
+                        <h4>Secure Access</h4>
+                        <p>Multi-factor authentication and encrypted data transmission for maximum security.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Mobile Responsive</h4>
+                        <p>Access your portal from any device with our fully responsive design.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4>Real-time Notifications</h4>
+                        <p>Get instant updates about your shipments via email and SMS alerts.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <h4>Document Management</h4>
+                        <p>Download and manage all your shipping documents in one centralized location.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>Analytics Dashboard</h4>
+                        <p>Track your shipping patterns and costs with comprehensive analytics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p>Get help anytime with our integrated support system and live chat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2>Transform Your Logistics Experience</h2>
+                    <p class="lead">Get ready for the next generation of logistics management with our advanced client portal.</p>
+                    <div class="cta-buttons mt-4">
+                        <a href="../contact.html" class="btn btn-light btn-lg">Contact Sales</a>
+                        <a href="../services/consolidation.html" class="btn btn-outline-light btn-lg">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>SRL-LOGIX</h4>
+                    <p>Your trusted logistics partner for comprehensive supply chain solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../services/consolidation.html">Services</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +27-12-345-6789</li>
+                        <li><i class="fas fa-envelope"></i> info@srllogix.co.za</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 SRL-LOGIX. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

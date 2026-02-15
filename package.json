@@ -1,0 +1,27 @@
+{
+  "name": "srl-logix-website",
+  "version": "1.0.0",
+  "description": "SRL-LOGIX Logistics Platform with Stack Auth integration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx @stackframe/init-stack@latest",
+    "build": "echo 'Build process would run here'",
+    "start": "npx @stackframe/init-stack@latest"
+  },
+  "dependencies": {
+    "@stackframe/stack": "^0.3.0",
+    "@stackframe/stack-nextjs": "^0.3.0"
+  },
+  "devDependencies": {
+    "next": "^14.0.0"
+  },
+  "keywords": [
+    "logistics",
+    "stack-auth",
+    "authentication",
+    "shipping",
+    "freight"
+  ],
+  "author": "SRL-LOGIX",
+  "license": "MIT"
+}

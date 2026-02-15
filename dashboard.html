@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SRL-LOGIX Dashboard - Manage shipments, track orders, and access logistics services with Stack Auth">
+    <meta name="keywords" content="dashboard, shipment management, logistics dashboard, track orders, stack auth">
+    <title>Dashboard - SRL-LOGIX</title>
+    
+    <!-- Contact Information Meta -->
+    <meta name="contact-email" content="srlmsocial@gmail.com">
+    <meta name="contact-phone" content="0789858837">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/Logo.JPG">
+    
+    <style>
+        .dashboard-container {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 100vh;
+        }
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--navy), rgba(11,37,69,0.95));
+            color: white;
+            padding: 2rem 0;
+        }
+        .user-profile {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .shipment-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .shipment-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-transit { background: #cce5ff; color: #004085; }
+        .status-delivered { background: #d4edda; color: #155724; }
+        .status-delayed { background: #f8d7da; color: #721c24; }
+        .quick-action {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .quick-action:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        .quick-action i {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        .logout-btn {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            border: none;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220,53,69,0.3);
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loading-spinner {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner-border text-primary mb-3" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Loading your dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <span><i class="bi bi-telephone-fill"></i> <a href="tel:0789858837" class="text-white text-decoration-none">0789858837</a></span>
+                    <span><i class="bi bi-envelope-fill"></i> <a href="mailto:srlmsocial@gmail.com" class="text-white text-decoration-none">srlmsocial@gmail.com</a></span>
+                    <span><i class="bi bi-clock-fill"></i> Mon-Fri: 8AM-6PM</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="https://srllogix.github.io" target="_blank" class="text-white me-3"><i class="bi bi-globe"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-glass sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/Logo.JPG" alt="SRL-LOGIX" height="40" class="me-2">
+                <span class="brand-text">SRL-LOGIX</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="services/index.html">All Services</a></li>
+                            <li><a class="dropdown-item" href="services/air-freight.html">Air Freight</a></li>
+                            <li><a class="dropdown-item" href="services/sea-freight.html">Sea Freight</a></li>
+                            <li><a class="dropdown-item" href="services/road-freight.html">Road & Rail</a></li>
+                            <li><a class="dropdown-item" href="services/warehousing.html">Warehousing</a></li>
+                            <li><a class="dropdown-item" href="services/customs-clearance.html">Customs Clearing</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="services/consolidation/china.html">China → SA</a></li>
+                            <li><a class="dropdown-item" href="services/consolidation/nigeria.html">Nigeria → SA</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="ior.html">Importer of Record</a></li>
+                            <li><a class="dropdown-item" href="eor.html">Exporter of Record</a></li>
+                            <li><a class="dropdown-item" href="ddp.html">Delivered Duty Paid</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="portalsDropdown" role="button" data-bs-toggle="dropdown">
+                            Portals
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="client.html">Client Portal</a></li>
+                            <li><a class="dropdown-item" href="driver.html">Driver Portal</a></li>
+                            <li><a class="dropdown-item" href="agent.html">Agent Portal</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="track.html">Track & Trace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button onclick="handleLogout()" class="logout-btn">
+                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-5 fw-bold mb-3">Welcome to Your Dashboard</h1>
+                        <p class="lead mb-0">Manage your shipments, track orders, and access logistics services</p>
+                    </div>
+                    <div class="col-lg-4 text-end">
+                        <div id="userInfo" class="d-flex align-items-center justify-content-end">
+                            <div class="text-end me-3">
+                                <div class="fw-bold" id="userName">Loading...</div>
+                                <div class="text-white-50" id="userEmail">Loading...</div>
+                            </div>
+                            <div class="rounded-circle bg-white p-2">
+                                <i class="bi bi-person-fill fs-4 text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="container py-5">
+            <!-- User Profile Section -->
+            <div class="user-profile">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h3 class="fw-bold mb-3" style="color: var(--navy);">Account Overview</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>Account Type:</strong> <span id="accountType">Loading...</span></p>
+                                <p class="mb-2"><strong>Company:</strong> <span id="companyName">Loading...</span></p>
+                                <p class="mb-2"><strong>Phone:</strong> <span id="phoneNumber">Loading...</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2"><strong>Member Since:</strong> <span id="memberSince">Loading...</span></p>
+                                <p class="mb-2"><strong>Last Login:</strong> <span id="lastLogin">Loading...</span></p>
+                                <p class="mb-2"><strong>Status:</strong> <span class="badge bg-success">Active</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button onclick="showEditProfile()" class="btn btn-outline-primary me-2">
+                            <i class="bi bi-pencil-square me-2"></i>Edit Profile
+                        </button>
+                        <button onclick="showSettings()" class="btn btn-outline-secondary">
+                            <i class="bi bi-gear me-2"></i>Settings
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-5">
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h3 class="fw-bold mb-0" id="totalShipments">0</h3>
+                                <p class="text-muted mb-0">Total Shipments</p>
+                            </div>
+                            <div class="ms-3">
+                                <i class="bi bi-box-seam fs-2 text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h3 class="fw-bold mb-0" id="activeShipments">0</h3>
+                                <p class="text-muted mb-0">Active Shipments</p>
+                            </div>
+                            <div class="ms-3">
+                                <i class="bi bi-truck fs-2 text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h3 class="fw-bold mb-0" id="deliveredShipments">0</h3>
+                                <p class="text-muted mb-0">Delivered</p>
+                            </div>
+                            <div class="ms-3">
+                                <i class="bi bi-check-circle fs-2 text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="stat-card">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <h3 class="fw-bold mb-0" id="pendingPayments">0</h3>
+                                <p class="text-muted mb-0">Pending Payments</p>
+                            </div>
+                            <div class="ms-3">
+                                <i class="bi bi-credit-card fs-2 text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="row mb-5">
+                <div class="col-md-3 mb-4">
+                    <div class="quick-action" onclick="showBookingModal()">
+                        <i class="bi bi-plus-circle"></i>
+                        <h5 class="fw-bold">New Shipment</h5>
+                        <p class="text-muted">Book a new shipment</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="quick-action" onclick="showTrackModal()">
+                        <i class="bi bi-search"></i>
+                        <h5 class="fw-bold">Track Shipment</h5>
+                        <p class="text-muted">Track your packages</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="quick-action" onclick="showDocuments()">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <h5 class="fw-bold">Documents</h5>
+                        <p class="text-muted">Manage documents</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="quick-action" onclick="showInvoices()">
+                        <i class="bi bi-receipt"></i>
+                        <h5 class="fw-bold">Invoices</h5>
+                        <p class="text-muted">View invoices</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Shipments -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold mb-4" style="color: var(--navy);">Recent Shipments</h3>
+                    <div id="shipmentsList">
+                        <!-- Shipments will be loaded here -->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="fw-bold mb-4" style="color: var(--navy);">Quick Links</h3>
+                    <div class="list-group">
+                        <a href="services/index.html" class="list-group-item list-group-item-action">
+                            <i class="bi bi-box-seam me-2"></i> Browse Services
+                        </a>
+                        <a href="track.html" class="list-group-item list-group-item-action">
+                            <i class="bi bi-search me-2"></i> Track & Trace
+                        </a>
+                        <a href="contact.html" class="list-group-item list-group-item-action">
+                            <i class="bi bi-telephone me-2"></i> Contact Support
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showHelp()">
+                            <i class="bi bi-question-circle me-2"></i> Help Center
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" onclick="showRates()">
+                            <i class="bi bi-calculator me-2"></i> Get Rates
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Book New Shipment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="bookingForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Service Type</label>
+                                <select class="form-select" required>
+                                    <option value="">Select Service</option>
+                                    <option value="air">Air Freight</option>
+                                    <option value="sea">Sea Freight</option>
+                                    <option value="road">Road & Rail</option>
+                                    <option value="live-animals">Live Animals</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Cargo Type</label>
+                                <select class="form-select" required>
+                                    <option value="">Select Cargo Type</option>
+                                    <option value="general">General Goods</option>
+                                    <option value="perishable">Perishable</option>
+                                    <option value="dangerous">Dangerous Goods</option>
+                                    <option value="live-animals">Live Animals</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Origin</label>
+                                <input type="text" class="form-control" required placeholder="City, Country">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Destination</label>
+                                <input type="text" class="form-control" required placeholder="City, Country">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Special Requirements</label>
+                            <textarea class="form-control" rows="3" placeholder="Any special handling requirements..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Upload Documents</label>
+                            <input type="file" class="form-control" multiple accept=".pdf,.doc,.docx,.jpg,.png">
+                            <small class="text-muted">Supported formats: PDF, DOC, DOCX, JPG, PNG (Max 10MB)</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="submitBooking()">
+                        <i class="bi bi-check-circle me-2"></i>Submit Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="images/Logo.JPG" alt="SRL-LOGIX" height="40" class="me-2">
+                        <h5 class="mb-0 text-white fw-bold">SRL-LOGIX</h5>
+                    </div>
+                    <p class="mb-3">Your trusted logistics partner for comprehensive supply chain solutions across Africa and beyond.</p>
+                    <div class="d-flex gap-3">
+                        <a href="https://srllogix.github.io" target="_blank" class="text-white fs-5"><i class="bi bi-globe"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="about.html" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="services/index.html" class="text-white-50 text-decoration-none">Services</a></li>
+                        <li class="mb-2"><a href="track.html" class="text-white-50 text-decoration-none">Track & Trace</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-white fw-bold mb-3">Contact Info</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-telephone-fill me-2"></i><a href="tel:0789858837" class="text-white-50 text-decoration-none">0789858837</a></li>
+                        <li class="mb-2"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:srlmsocial@gmail.com" class="text-white-50 text-decoration-none">srlmsocial@gmail.com</a></li>
+                        <li class="mb-2"><i class="bi bi-geo-alt-fill me-2"></i><span class="text-white-50">Johannesburg, South Africa</span></li>
+                        <li class="mb-2"><i class="bi bi-clock-fill me-2"></i><span class="text-white-50">Mon-Fri: 8AM-6PM</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="border-top border-secondary pt-3 text-center">
+                        <p class="text-white-50 mb-0">&copy; 2024 SRL-LOGIX. All rights reserved. | <a href="https://srllogix.github.io" target="_blank" class="text-white-50">Visit our GitHub</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Stack Auth Dashboard JavaScript -->
+    <script>
+        // Stack Auth Configuration
+        const stackConfig = {
+            projectId: 'your-project-id', // Replace with your actual project ID
+            baseUrl: window.location.origin,
+            redirectUrl: `${window.location.origin}/handler/callback`,
+            postLoginRedirect: '/dashboard',
+            postSignUpRedirect: '/dashboard'
+        };
+
+        let currentUser = null;
+        let shipments = [];
+
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', async () => {
+            await initializeDashboard();
+        });
+
+        async function initializeDashboard() {
+            showLoading(true);
+            
+            try {
+                // Check if user is authenticated with Stack Auth
+                const { StackClient } = await import('@stackframe/stack');
+                const client = new StackClient(stackConfig);
+                
+                currentUser = await client.getUser();
+                
+                if (!currentUser) {
+                    // User not authenticated, redirect to login
+                    window.location.href = 'client.html';
+                    return;
+                }
+
+                // Load user data
+                await loadUserData();
+                
+                // Load shipments data
+                await loadShipments();
+                
+                // Update UI
+                updateUI();
+                
+            } catch (error) {
+                console.error('Dashboard initialization error:', error);
+                showError('Failed to load dashboard. Please try again.');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function loadUserData() {
+            try {
+                // Get user profile data from Stack Auth
+                const profileData = currentUser.profileData || {};
+                
+                // Update user information
+                document.getElementById('userName').textContent = currentUser.displayName || 'User';
+                document.getElementById('userEmail').textContent = currentUser.primaryEmail || 'No email';
+                document.getElementById('accountType').textContent = profileData.userType || 'Individual';
+                document.getElementById('companyName').textContent = profileData.company || 'N/A';
+                document.getElementById('phoneNumber').textContent = profileData.phone || 'N/A';
+                document.getElementById('memberSince').textContent = new Date(currentUser.createdAt).toLocaleDateString();
+                document.getElementById('lastLogin').textContent = new Date().toLocaleDateString();
+                
+            } catch (error) {
+                console.error('Error loading user data:', error);
+            }
+        }
+
+        async function loadShipments() {
+            try {
+                // Load shipments from localStorage or API
+                const storedShipments = localStorage.getItem('srl_shipments');
+                if (storedShipments) {
+                    shipments = JSON.parse(storedShipments);
+                } else {
+                    // Generate sample shipments for demo
+                    shipments = generateSampleShipments();
+                    localStorage.setItem('srl_shipments', JSON.stringify(shipments));
+                }
+                
+                // Update statistics
+                updateStatistics();
+                
+                // Render shipments list
+                renderShipments();
+                
+            } catch (error) {
+                console.error('Error loading shipments:', error);
+            }
+        }
+
+        function generateSampleShipments() {
+            return [
+                {
+                    id: 'SRL-2024-001',
+                    service: 'Air Freight',
+                    origin: 'Johannesburg, SA',
+                    destination: 'London, UK',
+                    status: 'transit',
+                    date: '2024-01-15',
+                    weight: '25 kg',
+                    tracking: 'AWB123456789'
+                },
+                {
+                    id: 'SRL-2024-002',
+                    service: 'Sea Freight',
+                    origin: 'Shanghai, China',
+                    destination: 'Durban, SA',
+                    status: 'pending',
+                    date: '2024-01-18',
+                    weight: '500 kg',
+                    tracking: 'CONT987654321'
+                },
+                {
+                    id: 'SRL-2024-003',
+                    service: 'Road Freight',
+                    origin: 'Cape Town, SA',
+                    destination: 'Pretoria, SA',
+                    status: 'delivered',
+                    date: '2024-01-10',
+                    weight: '100 kg',
+                    tracking: 'TRK555666777'
+                }
+            ];
+        }
+
+        function updateStatistics() {
+            const totalShipments = shipments.length;
+            const activeShipments = shipments.filter(s => s.status === 'transit' || s.status === 'pending').length;
+            const deliveredShipments = shipments.filter(s => s.status === 'delivered').length;
+            const pendingPayments = shipments.filter(s => s.status === 'pending').length;
+            
+            document.getElementById('totalShipments').textContent = totalShipments;
+            document.getElementById('activeShipments').textContent = activeShipments;
+            document.getElementById('deliveredShipments').textContent = deliveredShipments;
+            document.getElementById('pendingPayments').textContent = pendingPayments;
+        }
+
+        function renderShipments() {
+            const shipmentsList = document.getElementById('shipmentsList');
+            
+            if (shipments.length === 0) {
+                shipmentsList.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="bi bi-inbox fs-1 text-muted"></i>
+                        <p class="text-muted">No shipments found</p>
+                        <button onclick="showBookingModal()" class="btn btn-primary">
+                            <i class="bi bi-plus-circle me-2"></i>Book Your First Shipment
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            shipmentsList.innerHTML = shipments.map(shipment => `
+                <div class="shipment-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="d-flex align-items-center mb-2">
+                                <h5 class="fw-bold mb-0 me-3">${shipment.id}</h5>
+                                <span class="status-badge status-${shipment.status}">${shipment.status.toUpperCase()}</span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="mb-1"><strong>Service:</strong> ${shipment.service}</p>
+                                    <p class="mb-1"><strong>Route:</strong> ${shipment.origin} → ${shipment.destination}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="mb-1"><strong>Date:</strong> ${shipment.date}</p>
+                                    <p class="mb-1"><strong>Weight:</strong> ${shipment.weight}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <div class="mb-2">
+                                <small class="text-muted">Tracking: ${shipment.tracking}</small>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button onclick="viewShipment('${shipment.id}')" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye me-1"></i>View
+                                </button>
+                                <button onclick="trackShipment('${shipment.tracking}')" class="btn btn-sm btn-outline-success">
+                                    <i class="bi bi-search me-1"></i>Track
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateUI() {
+            // UI is updated through individual functions
+        }
+
+        // Action Functions
+        function showBookingModal() {
+            const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            modal.show();
+        }
+
+        function showTrackModal() {
+            const trackingNumber = prompt('Enter tracking number:');
+            if (trackingNumber) {
+                window.location.href = `track.html?ref=${trackingNumber}`;
+            }
+        }
+
+        function showDocuments() {
+            alert('Document management feature coming soon!');
+        }
+
+        function showInvoices() {
+            alert('Invoice management feature coming soon!');
+        }
+
+        function showEditProfile() {
+            alert('Profile editing feature coming soon!');
+        }
+
+        function showSettings() {
+            alert('Settings feature coming soon!');
+        }
+
+        function showHelp() {
+            alert('Help center feature coming soon!');
+        }
+
+        function showRates() {
+            alert('Rates calculator feature coming soon!');
+        }
+
+        function viewShipment(id) {
+            const shipment = shipments.find(s => s.id === id);
+            if (shipment) {
+                alert(`Shipment Details:\n\nID: ${shipment.id}\nService: ${shipment.service}\nRoute: ${shipment.origin} → ${shipment.destination}\nStatus: ${shipment.status}\nDate: ${shipment.date}\nWeight: ${shipment.weight}\nTracking: ${shipment.tracking}`);
+            }
+        }
+
+        function trackShipment(tracking) {
+            window.location.href = `track.html?ref=${tracking}`;
+        }
+
+        function submitBooking() {
+            const form = document.getElementById('bookingForm');
+            if (form.checkValidity()) {
+                // Create new shipment
+                const newShipment = {
+                    id: 'SRL-2024-' + String(shipments.length + 1).padStart(3, '0'),
+                    service: form.querySelector('select').value,
+                    origin: form.querySelectorAll('input')[0].value,
+                    destination: form.querySelectorAll('input')[1].value,
+                    status: 'pending',
+                    date: new Date().toISOString().split('T')[0],
+                    weight: 'TBD',
+                    tracking: 'TRK' + Math.random().toString(36).substr(2, 9).toUpperCase()
+                };
+                
+                shipments.unshift(newShipment);
+                localStorage.setItem('srl_shipments', JSON.stringify(shipments));
+                
+                // Update UI
+                updateStatistics();
+                renderShipments();
+                
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('bookingModal')).hide();
+                form.reset();
+                
+                // Show success message
+                alert('Booking submitted successfully! Reference: ' + newShipment.id);
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        async function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                try {
+                    const { StackClient } = await import('@stackframe/stack');
+                    const client = new StackClient(stackConfig);
+                    
+                    // Sign out from Stack Auth
+                    await client.signOut();
+                    
+                    // Clear local data
+                    localStorage.removeItem('srl_shipments');
+                    
+                    // Redirect to login page
+                    window.location.href = 'client.html';
+                    
+                } catch (error) {
+                    console.error('Logout error:', error);
+                    // Fallback redirect
+                    window.location.href = 'client.html';
+                }
+            }
+        }
+
+        function showLoading(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.style.display = show ? 'flex' : 'none';
+        }
+
+        function showError(message) {
+            alert('Error: ' + message);
+        }
+
+        // Live animal shipment validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cargoType = document.querySelector('select[required]');
+            if (cargoType) {
+                cargoType.addEventListener('change', function() {
+                    if (this.value === 'live-animals') {
+                        const specialReq = document.querySelector('textarea[placeholder*="special handling"]');
+                        if (specialReq) {
+                            specialReq.value = 'Live Animal Shipment - Health Certificate and Import Permit required';
+                            specialReq.classList.add('border-danger');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
