@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://srllogix.github.io/sitemap.xml
+
+# Block common non-content paths
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /*.json$
+Disallow: /*.txt$
